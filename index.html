@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>The Town HTML CSS Template</title>
+    <title>Apapun</title>
     <link rel="stylesheet" href="fontawesome-5.5/css/all.min.css" />
     <link rel="stylesheet" href="slick/slick.css">
     <link rel="stylesheet" href="slick/slick-theme.css">
@@ -23,7 +23,7 @@
       <nav class="navbar navbar-expand-md tm-navbar" id="tmNav">              
         <div class="container">   
           <div class="tm-next">
-              <a href="#hero" class="navbar-brand">The Town</a>
+              <a href="#hero" class="navbar-brand">The town</a>
           </div>             
             
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,16 @@
               </li>
               <li class="nav-item">
                   <a class="nav-link tm-nav-link" href="#contact">Contact Us</a>
-              </li>                    
+              </li>
+				 <li class="nav-item">
+				<li id="loginMenu"><a href="login/login.html" class="external">Masuk</a></li>
+			</li>
+				 <li class="nav-item">
+    <li id="registerMenu"><a href="login/register.html" class="external">Daftar</a></li>
+			</li>
+				 <li class="nav-item">
+    <li id="logoutMenu" style="display: none;"><a href="#" class="external" id="authLink">Keluar</a></li> 
+				 </li>
             </ul>
           </div>        
         </div>
@@ -260,7 +269,8 @@
     <script src="slick/slick.min.js"></script>
     <script src="magnific-popup/jquery.magnific-popup.min.js"></script>
     <script src="js/jquery.singlePageNav.min.js"></script>     
-    <script src="js/bootstrap.min.js"></script> 
+    <script src="login/js/welcome.js"></script>
+	  
     <script>
 
       function getOffSet(){
@@ -408,5 +418,40 @@
         });
       });
     </script>
+
+	  <script>
+    
+    const loginMenu = document.getElementById("loginMenu");
+    const registerMenu = document.getElementById("registerMenu");
+    const logoutMenu = document.getElementById("logoutMenu");
+    const authLink = document.getElementById("authLink");
+
+    
+    const isLoggedIn = localStorage.getItem("username");
+
+    if (isLoggedIn) {
+        
+        loginMenu.style.display = "none";    
+        registerMenu.style.display = "none"; 
+        logoutMenu.style.display = "inline-block";  
+
+        authLink.href = "../index.html";
+        loginMenu.href ="../index.html";
+        registerMenu.href="../index.html";
+        
+        authLink.addEventListener("click", function(e) {
+            e.preventDefault(); 
+            
+            localStorage.removeItem("username");
+            alert("Kamu berhasil keluar!");
+
+            window.location.reload();
+            
+            
+             
+        });
+
+    }
+        </script>
   </body>
 </html>
